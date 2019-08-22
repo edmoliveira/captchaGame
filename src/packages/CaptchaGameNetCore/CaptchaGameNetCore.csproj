@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Version>1.0.1</Version>
+    <Authors>Oliveira, Edson</Authors>
+    <Product>Captcha Game .NET Core</Product>
+    <Description>Games library to distinguish human from machine input (.NET Core).</Description>
+    <Copyright>Copyright 2019</Copyright>
+    <PackageProjectUrl>https://edmoliveira.github.io/captchaGame/</PackageProjectUrl>
+    <PackageIconUrl>https://edmoliveira.github.io/captchaGame/CaptchaGame.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/edmoliveira/captchaGame</RepositoryUrl>
+    <RepositoryType>GIT</RepositoryType>
+    <PackageTags>Captcha</PackageTags>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>CaptchaGameNetCore.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CaptchaGameLibrary.Core" Version="1.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+</Project>

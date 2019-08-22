@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>CaptchaGame</id>
+    <version>1.0.0</version>
+    <title>Captcha Game</title>
+    <authors>Oliveira, Edson</authors>
+    <owners>Oliveira, Edson</owners>
+    <license type="expression">MIT</license>
+    <projectUrl>https://edmoliveira.github.io/captchaGame/</projectUrl>
+    <iconUrl>https://edmoliveira.github.io/captchaGame/CaptchaGame.png</iconUrl>
+    <repository type="git" url="https://github.com/edmoliveira/captchaGame"  />
+    <description>Games library to distinguish human from machine input. (.NET Framework)</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2019</copyright>
+    <tags>Captcha</tags>
+    <dependencies>
+      <dependency id="CaptchaGameLibrary" version="1.0.0"  />
+      <dependency id="Microsoft.AspNet.Mvc" version="5.2.7" />
+      <dependency id="Microsoft.AspNet.Razor" version="3.2.7" />
+      <dependency id="Microsoft.AspNet.WebPages" version="3.2.7" />
+      <dependency id="Microsoft.Web.Infrastructure" version="1.0.0.0" />
+      <dependency id="Newtonsoft.Json" version="12.0.2"/>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\*.dll" target="lib/net472" />
+    <file src="bin\Release\*.xml" target="lib/net472" />
+  </files>
+</package>

@@ -1,0 +1,60 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper CaptchaGameNetCore.Helpers.CanvasTagHelper, CaptchaGameNetCore
+
+@model CaptchaGame.App.Core.Models.FormQuizViewModel
+
+@{
+    Model.CaptchaModel.ButtonLink = "captchagame-btn|userSave";
+    Model.CaptchaModel.ContentLink = "captchagame-content|userSave";
+    Model.CaptchaModel.ValueLink = "captchagame-value|userSave";
+}
+
+<div class="quizDiv">
+    <form asp-controller="Home" asp-action="Save" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input id="key" type="hidden" value="" asp-for="CaptchaId" captchagame-value="userSave" />
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" class="form-control" placeholder="your last name" asp-for="LastName">
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>First Name</label>
+            <input type="text" class="form-control" placeholder="your first name" asp-for="FirstName">
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>Email address</label>
+            <input type="email" class="form-control" placeholder="name@example.com" asp-for="Email">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>Sex</label>
+            <select class="form-control" asp-for="Sex">
+                <option>Masculine</option>
+                <option>Feminine</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Do you like your job?</label><br />
+            <input type="radio" asp-for="QuizResult" value="True" checked="checked" /><label class="quizLabel">Yes</label>
+            <input type="radio" asp-for="QuizResult" value="No" style="margin-left:10px;" /><label class="quizLabel">No</label>
+            <span asp-validation-for="QuizResult" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>I'm not a robot!</label>
+            <div captchagame-content="userSave" style="max-width:150px;width:100%;height:150px;">
+
+            </div>
+
+            <p></p>
+
+            <button id="saveButton" type="submit" class="btn btn-primary" captchagame-btn="userSave">Submit</button>
+        </div>
+    </form>
+</div>
+
+<captchagame-content info="Model.CaptchaModel">
+
+</captchagame-content>
+

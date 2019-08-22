@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CaptchaGameNetCore</name>
+    </assembly>
+    <members>
+        <member name="T:CaptchaGameNetCore.Helpers.CanvasTagHelper">
+            <summary>
+            Creates the captchagame component.
+            </summary>
+        </member>
+        <member name="P:CaptchaGameNetCore.Helpers.CanvasTagHelper.Info">
+            <summary>
+            Data used for creating the game script of the client side
+            </summary>
+        </member>
+        <member name="F:CaptchaGameNetCore.Helpers.CanvasTagHelper.captchaService">
+            <summary>
+            Creates the game script
+            </summary>
+        </member>
+        <member name="M:CaptchaGameNetCore.Helpers.CanvasTagHelper.#ctor(CaptchaGameNetCore.Interfaces.ICaptchaGameService)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="captchaService">Creates the game script</param>
+        </member>
+        <member name="M:CaptchaGameNetCore.Helpers.CanvasTagHelper.Process(Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext,Microsoft.AspNetCore.Razor.TagHelpers.TagHelperOutput)">
+            <summary>
+            Synchronously executes the Microsoft.AspNetCore.Razor.TagHelpers.TagHelper with the given context and output.
+            </summary>
+            <param name="context"> Contains information associated with the current HTML tag.</param>
+            <param name="output">A stateful HTML element used to generate an HTML tag.</param>
+        </member>
+        <member name="T:CaptchaGameNetCore.Interfaces.ICaptchaGameService">
+            <summary>
+            Defines methods to create scripts (Client Side), key for validator and to validate the key.
+            </summary>
+        </member>
+        <member name="M:CaptchaGameNetCore.Interfaces.ICaptchaGameService.GetGame">
+            <summary>
+            Gets object to get the key used for validation.
+            </summary>
+            <returns>Returns interface IGame</returns>
+        </member>
+        <member name="M:CaptchaGameNetCore.Interfaces.ICaptchaGameService.GetGameScript(CaptchaGameLibrary.Models.CaptchaGameModel)">
+            <summary>
+            Gets the game script, this script to control the game. (Client Side)
+            </summary>
+            <param name="model">Model to create the game script of the client side</param>
+            <returns>Returns the script</returns>
+        </member>
+        <member name="M:CaptchaGameNetCore.Interfaces.ICaptchaGameService.Validate(System.String,System.String)">
+            <summary>
+            Method used for validates the key
+            </summary>
+            <param name="validatorKey">Encrypted key of the validator</param>
+            <param name="gameResponse">Response of the client side</param>
+            <returns>Returns true if validator key is valid</returns>
+        </member>
+        <member name="T:CaptchaGameNetCore.Services.CaptchaGameService">
+            <summary>
+            Creates scripts (Client Side), key for validator and to validate the key.
+            Creates the captchagame component.
+            </summary>
+        </member>
+        <member name="F:CaptchaGameNetCore.Services.CaptchaGameService.scriptManager">
+            <summary>
+            Object used for creating scripts (Client Side)
+            </summary>
+        </member>
+        <member name="F:CaptchaGameNetCore.Services.CaptchaGameService.validation">
+            <summary>
+             Object used for validating validator key
+            </summary>
+        </member>
+        <member name="M:CaptchaGameNetCore.Services.CaptchaGameService.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:CaptchaGameNetCore.Services.CaptchaGameService.ProcessAsync(Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext,Microsoft.AspNetCore.Razor.TagHelpers.TagHelperOutput)">
+            <summary>
+            Synchronously executes the Microsoft.AspNetCore.Razor.TagHelpers.ITagHelperComponent with the given context and output.
+            </summary>
+            <param name="context">Contains information associated with the current HTML tag.</param>
+            <param name="output">A stateful HTML element used to generate an HTML tag.</param>
+            <returns>Task</returns>
+        </member>
+        <member name="M:CaptchaGameNetCore.Services.CaptchaGameService.GetGame">
+            <summary>
+            Gets object to get the key used for validation.
+            </summary>
+            <returns>Returns interface IGame</returns>
+        </member>
+        <member name="M:CaptchaGameNetCore.Services.CaptchaGameService.Validate(System.String,System.String)">
+            <summary>
+            Method used for validates the key
+            </summary>
+            <param name="validatorKey">Encrypted key of the validator</param>
+            <param name="gameResponse">Response of the client side</param>
+            <returns>Returns true if validator key is valid</returns>
+        </member>
+        <member name="M:CaptchaGameNetCore.Services.CaptchaGameService.GetGameScript(CaptchaGameLibrary.Models.CaptchaGameModel)">
+            <summary>
+            Gets the game script, this script to control the game. (Client Side)
+            </summary>
+            <param name="model">Model to create the game script of the client side</param>
+            <returns>Returns the script</returns>
+        </member>
+    </members>
+</doc>

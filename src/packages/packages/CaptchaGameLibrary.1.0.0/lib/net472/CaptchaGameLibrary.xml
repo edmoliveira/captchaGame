@@ -1,0 +1,733 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CaptchaGameLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:CaptchaGameLibrary.CaptchaGameException">
+            <summary>
+            Represents errors that occur during application execution.
+            </summary>
+        </member>
+        <member name="M:CaptchaGameLibrary.CaptchaGameException.#ctor">
+            <summary>
+            Initializes a new instance of the System.Exception class.
+            </summary>
+        </member>
+        <member name="M:CaptchaGameLibrary.CaptchaGameException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the System.Exception class with a specified error  message.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:CaptchaGameLibrary.CaptchaGameException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the System.Exception class with a specified error message and a reference to the inner exception that is the cause of this exception.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="T:CaptchaGameLibrary.Cryptography">
+            <summary>
+            Provides methods for creates, encrypts and validates the key.
+            </summary>
+        </member>
+        <member name="F:CaptchaGameLibrary.Cryptography.passwordHash">
+            <summary>
+            The password used to derive the key
+            </summary>
+        </member>
+        <member name="F:CaptchaGameLibrary.Cryptography.saltKey">
+            <summary>
+            The key salt used to derive the key.
+            </summary>
+        </member>
+        <member name="F:CaptchaGameLibrary.Cryptography.viKey">
+            <summary>
+            The IV to be used for the symmetric algorithm.
+            </summary>
+        </member>
+        <member name="M:CaptchaGameLibrary.Cryptography.CreatetValidatorKey(CaptchaGameLibrary.Formulas.BaseFormula)">
+            <summary>
+            Creates the validator key, serializes and encrypts the object formula.
+            </summary>
+            <param name="formula">Object formula for the validator</param>
+            <returns>Object formula serialized and encrypted</returns>
+        </member>
+        <member name="M:CaptchaGameLibrary.Cryptography.Validate(System.String,System.String)">
+            <summary>
+            Method used for validates the validator key
+            </summary>
+            <param name="validatorKey">Encrypted key of the validator</param>
+            <param name="gameResponse">Response of the client side</param>
+            <returns>Returns true if validator key is valid</returns>
+        </member>
+        <member name="M:CaptchaGameLibrary.Cryptography.Encrypt(System.String)">
+            <summary>
+            Encrypts the text
+            </summary>
+            <param name="text">Text for be encrypted</param>
+            <returns>Text encrypted</returns>
+        </member>
+        <member name="M:CaptchaGameLibrary.Cryptography.Decrypt(System.String)">
+            <summary>
+            Decrypts the text
+            </summary>
+            <param name="encryptedText">Text for be decrypted</param>
+            <returns>Text decrypted</returns>
+        </member>
+        <member name="T:CaptchaGameLibrary.GameNumber">
+            <summary>
+            Numbers of Game
+            </summary>
+        </member>
+        <member name="T:CaptchaGameLibrary.OperationType">
+            <summary>
+            Types of Operation
+            </summary>
+        </member>
+        <member name="T:CaptchaGameLibrary.DirectionSwitchGame">
+            <summary>
+            Direction of the object
+            </summary>
+        </member>
+        <member name="M:CaptchaGameLibrary.Extensions.ListExtension.PushAt``1(System.Collections.Generic.List{``0},System.Int32)">
+            <summary>
+            Gets and removes the element at the specified index of the System.Collections.Generic.List`1
+            </summary>
+            <typeparam name="T">Type</typeparam>
+            <param name="source">List</param>
+            <param name="index">The zero-based index of the element to remove</param>
+            <returns>returns the element at the specified index</returns>
+        </member>
+        <member name="T:CaptchaGameLibrary.Formulas.BaseFormula">
+            <summary>
+            Base class of the formulas class to the validator 
+            </summary>
+        </member>
+        <member name="P:CaptchaGameLibrary.Formulas.BaseFormula.ValidatorClassName">
+            <summary>
+            Name of validator class.
+            </summary>
+        </member>
+        <member name="T:CaptchaGameLibrary.Formulas.SwitchFormula">
+            <summary>
+            Formula class for the validator (Game Switch)
+            </summary>
+        </member>
+        <member name="P:CaptchaGameLibrary.Formulas.SwitchFormula.Value">
+            <summary>
+            Property name of the object position.
+            </summary>
+        </member>
+        <member name="P:CaptchaGameLibrary.Formulas.SwitchFormula.FromValue">
+            <summary>
+            Property name of the starting position of the object.
+            </summary>
+        </member>
+        <member name="P:CaptchaGameLibrary.Formulas.SwitchFormula.ToValue">
+            <summary>
+            Property name of the target position of the object.
+            </summary>
+        </member>
+        <member name="P:CaptchaGameLibrary.Formulas.SwitchFormula.KeyValue">
+            <summary>
+            Random value for math operation
+            </summary>
+        </member>
+        <member name="P:CaptchaGameLibrary.Formulas.SwitchFormula.ResponseName">
+            <summary>
+            Random value of the client side for math operation
+            </summary>
+        </member>
+        <member name="P:CaptchaGameLibrary.Formulas.SwitchFormula.Operation">
+            <summary>
+            Types of Operation
+            </summary>
+        </member>
+        <member name="T:CaptchaGameLibrary.GameFactory">
+            <summary>
+            Factory used for creating scripts, keys for validators and validator.
+            </summary>
+        </member>
+        <member name="F:CaptchaGameLibrary.GameFactory.lazy">
+            <summary>
+            Lazy initialization of the GameFactory instance.
+            </summary>
+        </member>
+        <member name="P:CaptchaGameLibrary.GameFactory.Instance">
+            <summary>
+            Singleton
+            </summary>
+        </member>
+        <member name="F:CaptchaGameLibrary.GameFactory.namesGenerator">
+            <summary>
+            Object used for generating names randomly
+            </summary>
+        </member>
+        <member name="F:CaptchaGameLibrary.GameFactory.getName">
+            <summary>
+            Property Name used for getting the result (Client Side)
+            </summary>
+        </member>
+        <member name="F:CaptchaGameLibrary.GameFactory.publicControlName">
+            <summary>
+            Global Object name of the game control (Client Side)
+            </summary>
+        </member>
+        <member name="F:CaptchaGameLibrary.GameFactory.loadMethodName">
+            <summary>
+            Method name used for loading the game (Client side)
+            </summary>
+        </member>
+        <member name="M:CaptchaGameLibrary.GameFactory.#ctor">
+            <summary>
+            private constructor
+            </summary>
+        </member>
+        <member name="M:CaptchaGameLibrary.GameFactory.CreateGame">
+            <summary>
+            Creates object to get the key used for validation.
+            </summary>
+            <returns>Returns interface IGame</returns>
+        </member>
+        <member name="M:CaptchaGameLibrary.GameFactory.CreateScriptManager">
+            <summary>
+            Create object used for creating scripts
+            </summary>
+            <returns>Returns interface IScriptManager</returns>
+        </member>
+        <member name="M:CaptchaGameLibrary.GameFactory.CreateValidation">
+            <summary>
+             Create object for validating the key.
+            </summary>
+            <returns>Returns interface IValidation</returns>
+        </member>
+        <member name="M:CaptchaGameLibrary.GameFactory.CreateCryptography">
+            <summary>
+            Create an instance of the Cryptography.
+            </summary>
+            <returns>Returns interface IGame</returns>
+        </member>
+        <member name="M:CaptchaGameLibrary.GameFactory.CreateNamesGenerator">
+            <summary>
+            Create an instance of the NamesGenerator.
+            </summary>
+            <returns>Returns interface IGame</returns>
+        </member>
+        <member name="M:CaptchaGameLibrary.GameFactory.CreateValidator(CaptchaGameLibrary.Formulas.BaseFormula)">
+            <summary>
+            Create an instance with the class name (ValidatorClassName)
+            </summary>
+            <param name="formula">Base class of the formulas class to the validator </param>
+            <returns>Returns interface IValidator</returns>
+        </member>
+        <member name="T:CaptchaGameLibrary.Games.BaseGame">
+            <summary>
+            Base class of the games class.
+            </summary>
+        </member>
+        <member name="P:CaptchaGameLibrary.Games.BaseGame.ClassName">
+            <summary>
+            Class name of the game script (Client Side)
+            </summary>
+        </member>
+        <member name="P:CaptchaGameLibrary.Games.BaseGame.ValidatorKey">
+            <summary>
+            Key used for validation.
+            </summary>
+        </member>
+        <member name="P:CaptchaGameLibrary.Games.BaseGame.PublicControlName">
+            <summary>
+            Global Object name of the game control (Client Side)
+            </summary>
+        </member>
+        <member name="P:CaptchaGameLibrary.Games.BaseGame.LoadMethodName">
+            <summary>
+            Method name used for loading the game (Client side)
+            </summary>
+        </member>
+        <member name="P:CaptchaGameLibrary.Games.BaseGame.GetName">
+            <summary>
+            Property name used for getting the result (Client Side)
+            </summary>
+        </member>
+        <member name="F:CaptchaGameLibrary.Games.BaseGame.cryptography">
+            <summary>
+            Class used for encrypting the validator key
+            </summary>
+        </member>
+        <member name="M:CaptchaGameLibrary.Games.BaseGame.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="getName">Property Name used for getting the result (Client Side)</param>
+            <param name="publicControlName">Global Object name of the game control (Client Side)</param>
+            <param name="loadMethodName">Method name used for loading the game (Client side)</param>
+        </member>
+        <member name="M:CaptchaGameLibrary.Games.BaseGame.GetScript">
+            <summary>
+            Gets game script (Client Side)
+            </summary>
+            <returns>Returns the script</returns>
+        </member>
+        <member name="M:CaptchaGameLibrary.Games.BaseGame.CreatetValidatorKey(CaptchaGameLibrary.Formulas.BaseFormula)">
+            <summary>
+            Create the encrypted key of the validator.
+            </summary>
+            <param name="formula">Formula object for the validator</param>
+            <returns>Returns the encrypted key of the validator </returns>
+        </member>
+        <member name="T:CaptchaGameLibrary.Games.SwitchGame">
+            <summary>
+            Game Class Switch.
+            </summary>
+        </member>
+        <member name="P:CaptchaGameLibrary.Games.SwitchGame.ValidatorKey">
+            <summary>
+            key used for validation.
+            </summary>
+        </member>
+        <member name="P:CaptchaGameLibrary.Games.SwitchGame.ClassName">
+            <summary>
+            Class name of the game script (Client Side)
+            </summary>
+        </member>
+        <member name="F:CaptchaGameLibrary.Games.SwitchGame.elementName">
+            <summary>
+            Element Name (Canvas)(ClientSide)
+            </summary>
+        </member>
+        <member name="F:CaptchaGameLibrary.Games.SwitchGame.fieldGetName">
+            <summary>
+            Field name of the Property Get (Property used to get the result)(ClientSide)
+            </summary>
+        </member>
+        <member name="F:CaptchaGameLibrary.Games.SwitchGame.arrayScript">
+            <summary>
+            Object used for saving the objects position on the screen (ClientSide)
+            </summary>
+        </member>
+        <member name="F:CaptchaGameLibrary.Games.SwitchGame.arrayName">
+            <summary>
+             Array name (ClientSide).
+            </summary>
+        </member>
+        <member name="F:CaptchaGameLibrary.Games.SwitchGame.objectName">
+            <summary>
+            Field name used for saving the selected item of the array. When the user clicks and moves the object on the screen)(ClientSide)
+            </summary>
+        </member>
+        <member name="F:CaptchaGameLibrary.Games.SwitchGame.functioNameLeaveOut">
+            <summary>
+            Function name of the event Leave Out.
+            </summary>
+        </member>
+        <member name="F:CaptchaGameLibrary.Games.SwitchGame.functionNameGoBack">
+            <summary>
+            Function name Go Back(ClientSide)
+            </summary>
+        </member>
+        <member name="F:CaptchaGameLibrary.Games.SwitchGame.functionNameToTarget">
+            <summary>
+            Function name To Target(ClientSide)
+            </summary>
+        </member>
+        <member name="F:CaptchaGameLibrary.Games.SwitchGame.blockStatus">
+            <summary>
+            Block Enumerator => CanGoBack | CannotGobackAndToTarget | CanToTarget | IsOnTarget
+                          CanGoBack = Animation function can go back the object from original position              
+            CannotGobackAndToTarget = Animation function cannot go back the object from original position and it cannot move the object to target. 
+                        CanToTarget = Animation function can move the object to target. 
+                         IsOnTarget = The object is on the target position.
+            </summary>
+        </member>
+        <member name="F:CaptchaGameLibrary.Games.SwitchGame.objectCount">
+            <summary>
+            Objects Total of the Array;
+            </summary>
+        </member>
+        <member name="F:CaptchaGameLibrary.Games.SwitchGame.result1">
+            <summary>
+            Result putted on the function Animation(Value expected by the validator).
+            </summary>
+        </member>
+        <member name="F:CaptchaGameLibrary.Games.SwitchGame.result2">
+            <summary>
+            Result putted on the function ToTarget(Value expected by the validator).
+            </summary>
+        </member>
+        <member name="F:CaptchaGameLibrary.Games.SwitchGame.gameColors">
+            <summary>
+            Objects Colors on the Client Side (Canvas).
+            </summary>
+        </member>
+        <member name="M:CaptchaGameLibrary.Games.SwitchGame.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="getName">Property Name used for getting the result (Client Side)</param>
+            <param name="publicControlName">Global Object name of the game control (Client Side)</param>
+            <param name="loadMethodName">Method name used for loading the game (Client side).</param>
+        </member>
+        <member name="M:CaptchaGameLibrary.Games.SwitchGame.GetScript">
+            <summary>
+            Gets game script (Client Side)
+            </summary>
+            <returns>Returns the script</returns>
+        </member>
+        <member name="M:CaptchaGameLibrary.Games.SwitchGame.CreateFunctionGet">
+            <summary>
+            Creates the function Get used for returning the array object. (Client Side)
+            </summary>
+            <returns>Returns the script</returns>
+        </member>
+        <member name="M:CaptchaGameLibrary.Games.SwitchGame.CreateFunctionRefresh">
+            <summary>
+            Creates the function Refresh used for starting the game. (Client Side)
+            </summary>
+            <returns>Returns the script</returns>
+        </member>
+        <member name="M:CaptchaGameLibrary.Games.SwitchGame.CreateEventMousedown">
+            <summary>
+            Creates the event Mousedown used for searching the object. (Client Side)
+            </summary>
+            <returns>Returns the script</returns>
+        </member>
+        <member name="M:CaptchaGameLibrary.Games.SwitchGame.CreateEventMousemove">
+            <summary>
+            Creates the event Mousemove used for moving the object. (Client Side)
+            </summary>
+            <returns>Returns the script</returns>
+        </member>
+        <member name="M:CaptchaGameLibrary.Games.SwitchGame.CreateEventMouseup">
+            <summary>
+            Creates the event Mouseup used for stopping object movement. (Client Side)
+            </summary>
+            <returns>Returns the script</returns>
+        </member>
+        <member name="M:CaptchaGameLibrary.Games.SwitchGame.CreateEventMouseout">
+            <summary>
+            Creates the event Mouseout used for stopping object movement. (Client Side)
+            </summary>
+            <returns>Returns the script</returns>
+        </member>
+        <member name="M:CaptchaGameLibrary.Games.SwitchGame.CreateAnimationFunction">
+            <summary>
+            Creates the function Animation. (Client Side)
+            </summary>
+            <returns>Returns the script</returns>
+        </member>
+        <member name="M:CaptchaGameLibrary.Games.SwitchGame.CreateInitializeFunction">
+            <summary>
+            Creates the function Initialize. (Client Side)
+            </summary>
+            <returns>Returns the script</returns>
+        </member>
+        <member name="M:CaptchaGameLibrary.Games.SwitchGame.CreateDrawFunction">
+            <summary>
+            Creates the function Draw. (Client Side)
+            </summary>
+            <returns>Returns the script</returns>
+        </member>
+        <member name="M:CaptchaGameLibrary.Games.SwitchGame.CreateDrawStarFunction">
+            <summary>
+            Creates the function DrawStar (Draws the object on star shape)(Client Side)
+            </summary>
+            <returns>Returns the script</returns>
+        </member>
+        <member name="M:CaptchaGameLibrary.Games.SwitchGame.CreateFunctionLeaveOut">
+            <summary>
+            Creates the function Leave Out used for stopping object movement. (Client Side)
+            </summary>
+            <returns>Returns the script</returns>
+        </member>
+        <member name="M:CaptchaGameLibrary.Games.SwitchGame.CreateFunctionGoBack">
+            <summary>
+            Creates the function GoBack.
+            </summary>
+            <remarks>
+            This function is used for returning the object on  initial position when it wasn't putted in your target position.
+            </remarks>
+            <returns>Returns the script</returns>
+        </member>
+        <member name="M:CaptchaGameLibrary.Games.SwitchGame.CreateFunctionToTarget">
+            <summary>
+            Creates the function ToTarget.
+            </summary>
+            <remarks>
+            This function is used for putting the object on target position 
+            </remarks>
+            <returns>Returns the script</returns>
+        </member>
+        <member name="M:CaptchaGameLibrary.Games.SwitchGame.CreateArrayScriptAndValidator(System.String,System.Int32,System.Int32,CaptchaGameLibrary.DirectionSwitchGame)">
+            <summary>
+            Creates ArrayScript | ResultScript | Formula | ObjectTotal
+            </summary>
+            <param name="responseName">Property name used for returning the value expected by the validator</param>
+            <param name="colorCount">Color count</param>
+            <param name="blockZeroNumber">Item stage of the array</param>
+            <param name="direction">Move Direction of the objects.</param>
+            <returns>Returns ArrayScript | ResultScript | Formula | ObjectTotal.</returns>
+        </member>
+        <member name="M:CaptchaGameLibrary.Games.SwitchGame.CreateItem(System.String,System.String,System.String,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Creates a item of the array used for saving the objects position on the screen (Client Side).
+            </summary>
+            <param name="fromX">Property name of the original object position [Horizontal]</param>
+            <param name="toX">Property name of the target object position [Horizontal]</param>
+            <param name="fromY">Property name of the original object position [Vertical]</param>
+            <param name="toY">Property name of the target object position [Vertical]</param>
+            <param name="radius">Radius of the object</param>
+            <param name="colorIndex">Color of the object</param>
+            <param name="blockZeroNumber">Stage of the object</param>
+            <returns>Returns script</returns>
+        </member>
+        <member name="M:CaptchaGameLibrary.Games.SwitchGame.CreateListRandom``1(``0[])">
+            <summary>
+            Method used for creating a list random.
+            </summary>
+            <typeparam name="T">The type of elements in the list</typeparam>
+            <param name="array">Array of the element type to create the list random</param>
+            <returns>Returns the list random</returns>
+        </member>
+        <member name="T:CaptchaGameLibrary.Games.SwitchGame.ArrayScriptValidator">
+            <summary>
+            Model to create the array script and the Validator. 
+            </summary>
+        </member>
+        <member name="P:CaptchaGameLibrary.Games.SwitchGame.ArrayScriptValidator.ArrayScript">
+            <summary>
+            Object used for saving the objects position on the screen (ClientSide)
+            </summary>
+        </member>
+        <member name="P:CaptchaGameLibrary.Games.SwitchGame.ArrayScriptValidator.ResultScript">
+            <summary>
+            Value expected by the validator
+            </summary>
+        </member>
+        <member name="P:CaptchaGameLibrary.Games.SwitchGame.ArrayScriptValidator.Formula">
+            <summary>
+            Formula class for the validator
+            </summary>
+        </member>
+        <member name="P:CaptchaGameLibrary.Games.SwitchGame.ArrayScriptValidator.ObjectTotal">
+            <summary>
+            Objects Total of the Array;
+            </summary>
+        </member>
+        <member name="T:CaptchaGameLibrary.Interfaces.ICryptography">
+            <summary>
+            Provides methods for creates and encrypts the validator key.
+            </summary>
+        </member>
+        <member name="M:CaptchaGameLibrary.Interfaces.ICryptography.CreatetValidatorKey(CaptchaGameLibrary.Formulas.BaseFormula)">
+            <summary>
+            Creates the validator key, serializes and encrypts the object formula.
+            </summary>
+            <param name="formula">Object formula for the validator</param>
+            <returns>Object formula serialized and encrypted</returns>
+        </member>
+        <member name="T:CaptchaGameLibrary.Interfaces.IGame">
+            <summary>
+            Defines method to get the key used for validation.
+            </summary>
+        </member>
+        <member name="P:CaptchaGameLibrary.Interfaces.IGame.ValidatorKey">
+            <summary>
+             Key used for validation.
+            </summary>
+        </member>
+        <member name="T:CaptchaGameLibrary.Interfaces.IGameScript">
+            <summary>
+            Defines methods to create the scripts (Client Side).
+            </summary>
+        </member>
+        <member name="P:CaptchaGameLibrary.Interfaces.IGameScript.ClassName">
+            <summary>
+            Class name of the script Javascript (Client Side)
+            </summary>
+        </member>
+        <member name="P:CaptchaGameLibrary.Interfaces.IGameScript.PublicControlName">
+            <summary>
+            Class name of the game script (Client Side)
+            </summary>
+        </member>
+        <member name="P:CaptchaGameLibrary.Interfaces.IGameScript.LoadMethodName">
+            <summary>
+            Property name used to get the result (Client Side)
+            </summary>
+        </member>
+        <member name="M:CaptchaGameLibrary.Interfaces.IGameScript.GetScript">
+            <summary>
+            Gets game script (Client Side)
+            </summary>
+            <returns>Returns the script</returns>
+        </member>
+        <member name="T:CaptchaGameLibrary.Interfaces.INamesGenerator">
+            <summary>
+            Defines method to generate names randomly
+            </summary>
+        </member>
+        <member name="M:CaptchaGameLibrary.Interfaces.INamesGenerator.GetNextName">
+            <summary>
+            Gets the next name.
+            </summary>
+            <returns>Name</returns>
+        </member>
+        <member name="T:CaptchaGameLibrary.Interfaces.IScriptManager">
+            <summary>
+            Defines methods to create scripts (Client Side)
+            </summary>
+        </member>
+        <member name="M:CaptchaGameLibrary.Interfaces.IScriptManager.GetMainScript">
+            <summary>
+            Gets the main script, this script to load the game. (Client Side)
+            </summary>
+            <returns>Returns the script</returns>
+        </member>
+        <member name="M:CaptchaGameLibrary.Interfaces.IScriptManager.GetGameScript(CaptchaGameLibrary.Models.CaptchaGameModel)">
+            <summary>
+            Gets the game script, this script to control the game. (Client Side)
+            </summary>
+            <param name="model">Model to create the game script of the client side</param>
+            <returns>Returns the script</returns>
+        </member>
+        <member name="T:CaptchaGameLibrary.Interfaces.IValidation">
+            <summary>
+            Provides methods for validating the key
+            </summary>
+        </member>
+        <member name="M:CaptchaGameLibrary.Interfaces.IValidation.Validate(System.String,System.String)">
+            <summary>
+            Method used for validates the key
+            </summary>
+            <param name="validatorKey">Encrypted key of the validator</param>
+            <param name="gameResponse">Response of the client side</param>
+            <returns>Returns true if validator key is valid</returns>
+        </member>
+        <member name="T:CaptchaGameLibrary.Interfaces.IValidator">
+            <summary>
+            Define methos to validate the game result.
+            </summary>
+        </member>
+        <member name="M:CaptchaGameLibrary.Interfaces.IValidator.Validate(System.String,System.String)">
+            <summary>
+            Validates the game result with the validator key. 
+            </summary>
+            <param name="formulaJson">Object Formula in JSON format.</param>
+            <param name="array">Object used for saving the objects position on the screen (ClientSide)</param>
+            <returns>Returns true if game result to pass on the tests of the objet formula</returns>
+        </member>
+        <member name="T:CaptchaGameLibrary.Models.CaptchaGameModel">
+            <summary>
+            Model to create the game script of the client side.
+            </summary>
+        </member>
+        <member name="P:CaptchaGameLibrary.Models.CaptchaGameModel.Game">
+            <summary>
+            Object used for loading the game of the client side.
+            </summary>
+        </member>
+        <member name="P:CaptchaGameLibrary.Models.CaptchaGameModel.ButtonLink">
+            <summary>
+            Submit button of the client side.
+            </summary>
+        </member>
+        <member name="P:CaptchaGameLibrary.Models.CaptchaGameModel.ContentLink">
+            <summary>
+            Container to put the object canvas of the client side.
+            </summary>
+        </member>
+        <member name="P:CaptchaGameLibrary.Models.CaptchaGameModel.ValueLink">
+            <summary>
+            Componet to save the result of the game.
+            </summary>
+        </member>
+        <member name="T:CaptchaGameLibrary.NamesGenerator">
+            <summary>
+            Random name generator
+            </summary>
+        </member>
+        <member name="F:CaptchaGameLibrary.NamesGenerator.nameCollection">
+            <summary>
+            Names list
+            </summary>
+        </member>
+        <member name="M:CaptchaGameLibrary.NamesGenerator.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:CaptchaGameLibrary.NamesGenerator.GetNextName">
+            <summary>
+            Gets the next name.
+            </summary>
+            <returns>Name</returns>
+        </member>
+        <member name="T:CaptchaGameLibrary.Scripts.ScriptManager">
+            <summary>
+            Creates the scripts to load and control the game of the client side.
+            </summary>
+        </member>
+        <member name="F:CaptchaGameLibrary.Scripts.ScriptManager.getName">
+            <summary>
+            Property Name used for getting the result (Client Side)
+            </summary>
+        </member>
+        <member name="F:CaptchaGameLibrary.Scripts.ScriptManager.publicControlName">
+            <summary>
+            Global Object name of the game control (Client Side)
+            </summary>
+        </member>
+        <member name="F:CaptchaGameLibrary.Scripts.ScriptManager.loadMethodName">
+            <summary>
+            Method name used for loading the game (Client side)
+            </summary>
+        </member>
+        <member name="F:CaptchaGameLibrary.Scripts.ScriptManager.controlName">
+            <summary>
+            Object name of the game control (Client Side)
+            </summary>
+        </member>
+        <member name="F:CaptchaGameLibrary.Scripts.ScriptManager.inputName">
+            <summary>
+            Componet name used for saving the result of the game (Client side)
+            </summary>
+        </member>
+        <member name="M:CaptchaGameLibrary.Scripts.ScriptManager.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="getName">Property Name used for getting the result (Client Side)</param>
+            <param name="publicControlName">Global Object name of the game control (Client Side)</param>
+            <param name="loadMethodName">Method name used for loading the game (Client side).</param>
+        </member>
+        <member name="M:CaptchaGameLibrary.Scripts.ScriptManager.GetMainScript">
+            <summary>
+            Gets the main script, this script to load the game. (Client Side)
+            </summary>
+            <returns>Returns the script</returns>
+        </member>
+        <member name="M:CaptchaGameLibrary.Scripts.ScriptManager.GetGameScript(CaptchaGameLibrary.Models.CaptchaGameModel)">
+            <summary>
+            Gets the game script, this script to control the game. (Client Side)
+            </summary>
+            <param name="model">Model to create the game script of the client side</param>
+            <returns>Returns the script</returns>
+        </member>
+        <member name="T:CaptchaGameLibrary.Validators.SwitchValidator">
+            <summary>
+            Class used for validating of the game result.
+            </summary>
+        </member>
+        <member name="M:CaptchaGameLibrary.Validators.SwitchValidator.Validate(System.String,System.String)">
+            <summary>
+            Validates the game result with the validator key. 
+            </summary>
+            <param name="formulaJson">Object Formula in JSON format.</param>
+            <param name="array">Object used for saving the objects position on the screen (ClientSide)</param>
+            <returns>Returns true if game result to pass on the tests of the objet formula</returns>
+        </member>
+    </members>
+</doc>

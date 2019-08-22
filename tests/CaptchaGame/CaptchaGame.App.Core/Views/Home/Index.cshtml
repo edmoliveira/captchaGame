@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Quiz";
+}
+
+<div class="alert alert-danger captchaError" role="alert">
+    <label id="erroLabel">@ViewBag.CaptchaError</label>
+</div>
+
+<div class="text-center">
+    <h1 class="display-4">Quiz</h1>
+
+    <div id="form">
+        <partial name="_Form" />
+    </div>
+</div>
+
+
+@section Scripts {
+    <script type="text/javascript" src="~/js/quiz.js"></script>
+}
