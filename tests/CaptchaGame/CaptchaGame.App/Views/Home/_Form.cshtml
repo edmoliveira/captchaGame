@@ -1,0 +1,55 @@
+@using CaptchaGame.Helpers;
+
+@model CaptchaGame.App.Core.Models.FormQuizViewModel
+
+@{
+    ViewData["Title"] = "User";
+
+    Model.CaptchaModel.ButtonLink = "captchagame-btn|userSave";
+    Model.CaptchaModel.ContentLink = "captchagame-content|userSave";
+    Model.CaptchaModel.ValueLink = "captchagame-value|userSave";
+}
+
+<div class="quizDiv">
+    <form method="post" action="@Url.Action("Save", "Home")">
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(c => c.CaptchaId, new { @id = "key", @captchagame_value = "userSave" })
+        <div class="form-group">
+            <label>Last Name</label>
+            @Html.TextBoxFor(c => c.LastName, new { @class = "form-control", @placeholder = "your last name" })
+            @Html.ValidationMessageFor(model => model.LastName, null, new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <label>First Name</label>
+            @Html.TextBoxFor(c => c.FirstName, new { @class = "form-control", @placeholder = "your first name" })
+            @Html.ValidationMessageFor(model => model.FirstName, null, new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <label>Email address</label>
+            @Html.TextBoxFor(c => c.Email, new { @type = "email", @class = "form-control", @placeholder = "name@example.com" })
+            @Html.ValidationMessageFor(model => model.Email, null, new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <label>Sex</label>
+
+            @Html.DropDownListFor(c => c.Sex, new SelectList(new string[] { "Masculine", "Feminine" }), new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Do you like your job?</label><br />
+            @Html.RadioButtonFor(c => c.QuizResult, true)<label class="quizLabel">Yes</label>
+            @Html.RadioButtonFor(c => c.QuizResult, false)<label class="quizLabel">No</label>
+        </div>
+        <div class="form-group">
+            <label>I'm not a robot!</label>
+            <div captchagame-content="userSave" style="max-width:150px;width:100%;height:150px;">
+
+            </div>
+
+            <p></p>
+
+            <button id="saveButton" type="submit" class="btn btn-primary" captchagame-btn="userSave">Submit</button>
+        </div>
+    </form>
+</div>
+
+@Html.CanvasTagHelper(Model.CaptchaModel)
